@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0F172A">
+    <title>Account Settings - GPT-Link</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="settings-container">
+        <nav class="settings-sidebar">
+            <div class="settings-header">
+                <i class="fas fa-cog"></i>
+                <h1>Settings</h1>
+            </div>
+            <ul class="settings-menu">
+                <li class="active" data-section="profile">
+                    <i class="fas fa-user"></i>
+                    Profile
+                </li>
+                <li data-section="security">
+                    <i class="fas fa-shield-alt"></i>
+                    Security
+                </li>
+                <li data-section="preferences">
+                    <i class="fas fa-sliders-h"></i>
+                    Preferences
+                </li>
+            </ul>
+            <button class="back-button" onclick="window.location.href='/'">
+                <i class="fas fa-arrow-left"></i>
+                Back to Chat
+            </button>
+            <button id="logoutBtn" class="logout-button">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </nav>
+
+        <main class="settings-content">
+            <section id="profile" class="settings-section active">
+                <h2>Profile Settings</h2>
+                <form id="profileForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" disabled>
+                        <small>Email cannot be changed</small>
+                    </div>
+                    <button type="submit" class="auth-button">Save Changes</button>
+                </form>
+            </section>
+
+            <section id="security" class="settings-section">
+                <h2>Security Settings</h2>
+                <form id="passwordForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="auth-button">Change Password</button>
+                </form>
+            </section>
+
+            <section id="preferences" class="settings-section">
+                <h2>Preferences</h2>
+                <form id="preferencesForm" class="settings-form">
+                    <div class="form-group">
+                        <label>Theme</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="theme" value="dark" checked>
+                                Dark
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="theme" value="light">
+                                Light
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fontSize">Font Size</label>
+                        <select id="fontSize">
+                            <option value="small">Small</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="auth-button">Save Preferences</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html> 

@@ -1,0 +1,158 @@
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+}
+
+.auth-box {
+    background: #1E293B;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-header i {
+    font-size: 2.5rem;
+    color: #38BDF8;
+    margin-bottom: 1rem;
+}
+
+.auth-header h1 {
+    font-size: 1.5rem;
+    color: #F8FAFC;
+    font-weight: 600;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #334155;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    color: #94A3B8;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.auth-tab.active {
+    color: #38BDF8;
+    border-bottom: 2px solid #38BDF8;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.auth-form.hidden {
+    display: none;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: #E2E8F0;
+    font-size: 0.875rem;
+}
+
+.form-group input {
+    padding: 0.75rem 1rem;
+    background: #0F172A;
+    border: 1px solid #334155;
+    border-radius: 0.5rem;
+    color: #F8FAFC;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #38BDF8;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.1);
+}
+
+.password-input {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.auth-button {
+    padding: 0.875rem;
+    background: #2563EB;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.auth-button:hover {
+    background: #1D4ED8;
+}
+
+.forgot-password {
+    text-align: center;
+    color: #38BDF8;
+    text-decoration: none;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .auth-box {
+        padding: 1.5rem;
+    }
+
+    .auth-header i {
+        font-size: 2rem;
+    }
+
+    .auth-header h1 {
+        font-size: 1.25rem;
+    }
+} 

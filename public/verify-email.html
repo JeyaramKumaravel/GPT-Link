@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0F172A">
+    <title>Verify Email - GPT-Link</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <i class="fas fa-link"></i>
+                <h1>Email Verification</h1>
+            </div>
+            <div id="verificationStatus" class="verification-status">
+                <div class="loading">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    Verifying your email...
+                </div>
+            </div>
+            <a href="/login.html" class="auth-link">Back to Login</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const statusDiv = document.getElementById('verificationStatus');
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            if (!token) {
+                showStatus('error', 'Invalid verification link');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/auth/verify-email/${token}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    showStatus('success', data.message);
+                    // Redirect to login page after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = '/login.html';
+                    }, 3000);
+                } else {
+                    showStatus('error', data.message);
+                }
+            } catch (error) {
+                showStatus('error', 'An error occurred during verification');
+            }
+        });
+
+        function showStatus(type, message) {
+            const statusDiv = document.getElementById('verificationStatus');
+            statusDiv.innerHTML = `
+                <div class="${type}">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                    ${message}
+                </div>
+            `;
+        }
+    </script>
+
+    <style>
+        .verification-status {
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .verification-status .loading,
+        .verification-status .success,
+        .verification-status .error {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .verification-status .success {
+            color: #16a34a;
+        }
+
+        .verification-status .error {
+            color: #dc2626;
+        }
+
+        .auth-link {
+            display: block;
+            text-align: center;
+            color: #2563eb;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</body>
+</html> 
